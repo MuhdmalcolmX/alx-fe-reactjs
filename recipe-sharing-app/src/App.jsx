@@ -1,14 +1,16 @@
-// App.jsx
-import create from 'zustand';
+// src/App.jsx
+import React from 'react';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 
-const useRecipeStore = create((set) => ({
-  recipes: [],
-  addRecipe: (recipe) => set((state) => ({
-    recipes: [...state.recipes, recipe]
-  })),
-  initializeRecipes: (initialRecipes) => set({ recipes: initialRecipes })
-}));
+const App = () => {
+  return (
+    <div>
+      <h1>Recipe Manager</h1>
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
+  );
+};
 
-export default useRecipeStore;
+export default App;
