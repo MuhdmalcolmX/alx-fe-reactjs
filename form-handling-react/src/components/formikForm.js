@@ -5,7 +5,7 @@ import * as Yup from 'yup'; // Import Yup for validation schema
 const FormikForm = () => {
   // Define the validation schema using Yup
   const validationSchema = Yup.object({
-    username: Yup.string()
+    username: Yup.string().required
       .required('Username is required'), // Adding required validation for the username field
 
     email: Yup.string()
