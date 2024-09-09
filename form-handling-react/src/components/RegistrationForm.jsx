@@ -69,7 +69,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
+          value={username}
           onChange={handleInputChange}
         />
         {errors.username && <span>{errors.username}</span>}
@@ -80,7 +80,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
+          value={email}
           onChange={handleInputChange}
         />
         {errors.email && <span>{errors.email}</span>}
@@ -91,7 +91,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={password}
           onChange={handleInputChange}
         />
         {errors.password && <span>{errors.password}</span>}
