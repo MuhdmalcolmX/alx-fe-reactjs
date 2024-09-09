@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  // Step 1: State management for each form field
+  // State management for each form field
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -14,7 +14,7 @@ const RegistrationForm = () => {
     password: '',
   });
 
-  // Step 2: Handle changes in form fields
+  // Handle changes in form fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,28 +23,32 @@ const RegistrationForm = () => {
     });
   };
 
-  // Step 3: Basic form validation
+  // Validation logic using destructuring and direct field checks
   const validateForm = () => {
+    const { username, email, password } = formData; // Destructure formData to access individual fields
     let formIsValid = true;
     let errors = {};
 
-    if (!formData.username) {
+    // Check if the username field is empty
+    if (!username) {
       errors.username = 'Username is required';
       formIsValid = false;
     }
 
-    if (!formData.email) {
+    // Check if the email field is empty or invalid
+    if (!email) {
       errors.email = 'Email is required';
       formIsValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       errors.email = 'Email is invalid';
       formIsValid = false;
     }
 
-    if (!formData.password) {
+    // Check if the password field is empty or too short
+    if (!password) {
       errors.password = 'Password is required';
       formIsValid = false;
-    } else if (formData.password.length < 6) {
+    } else if (password.length < 6) {
       errors.password = 'Password should be at least 6 characters';
       formIsValid = false;
     }
@@ -53,7 +57,7 @@ const RegistrationForm = () => {
     return formIsValid;
   };
 
-  // Step 4: Handle form submission
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -69,7 +73,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={username}
+          value={formData.username} // Bind the username value to formData.username
           onChange={handleInputChange}
         />
         {errors.username && <span>{errors.username}</span>}
@@ -80,7 +84,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={email}
+          value={formData.email} // Bind the email value to formData.email
           onChange={handleInputChange}
         />
         {errors.email && <span>{errors.email}</span>}
@@ -91,7 +95,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={password}
+          value={formData.password} // Bind the password value to formData.password
           onChange={handleInputChange}
         />
         {errors.password && <span>{errors.password}</span>}
